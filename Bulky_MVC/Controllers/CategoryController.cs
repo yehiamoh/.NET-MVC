@@ -25,6 +25,16 @@ namespace Bulky_MVC.Controllers
         [HttpPost]
         public IActionResult Create(Category category)
         {
+            bool IsCategoryNumber= category.Name.All(char.IsDigit);
+
+            if (IsCategoryNumber)
+            {
+                ModelState.AddModelError("Name", "The Name Must Be A Characters");
+            }
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             _dbContext.Categories.Add(category);
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Category");
