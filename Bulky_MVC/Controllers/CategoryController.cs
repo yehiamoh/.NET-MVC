@@ -16,10 +16,18 @@ namespace Bulky_MVC.Controllers
         {
             List<Category> CategoriesList= _dbContext.Categories.ToList();
             return View(CategoriesList);
-        } 
+        }
         public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Category category)
+        {
+            _dbContext.Categories.Add(category);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Category");
         }
     }
 }
