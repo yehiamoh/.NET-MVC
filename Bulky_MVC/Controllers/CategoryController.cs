@@ -37,6 +37,7 @@ namespace Bulky_MVC.Controllers
             }
             _dbContext.Categories.Add(category);
             _dbContext.SaveChanges();
+            TempData["success"] = "Category Created Successfully"; // Will Be Used In The View
             return RedirectToAction("Index", "Category");
         }
 
@@ -61,6 +62,7 @@ namespace Bulky_MVC.Controllers
                 return View();
             }
             _dbContext.Categories.Update(category);
+            TempData["success"] = "Category Edited Successfully"; // Will Be Used In The View
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Category");
         }
@@ -94,6 +96,7 @@ namespace Bulky_MVC.Controllers
             }
             _dbContext.Categories.Remove(category);
             _dbContext.SaveChanges();
+            TempData["success"] = "Category Deleted Successfully"; // Will Be Used In The View
             return RedirectToAction("Index", "Category");
         }
     }

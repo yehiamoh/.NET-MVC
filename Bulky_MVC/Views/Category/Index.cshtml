@@ -1,4 +1,23 @@
 ﻿@model List<Category>
+@{
+            /*
+             * TempData Can Be Assigned In the controller and used here in the Views
+             * After refreshing The Page it will disappear
+             * 
+             * 
+             * @if(TempData["success"]!=null){
+                <h2>@TempData["success"]</h2>
+                 }
+             * 
+             *  Update => It's Better To use partial views rather than temp Data Value That Appears For Reusability 
+             * You Just Can Call  <partial name="_Notification"></partial> One Time And You Can Change the Defination only once int the shared/_Notification.cshtml
+             * 
+             * Update=>Moved To Partial View To Be Accessed Amoung All The Pages Not Only Been Speceifeid to one Page
+             */
+
+            
+}
+    
 <div class="container">
     <div class="row pt-4 pb-3">
         <div class="col-6">

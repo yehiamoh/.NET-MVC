@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Bulky_MVC.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 </head>
 <body>
     <header>
@@ -37,6 +38,8 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @{/* Moved To Partial View To Be Accessed Amoung All The Pages Not Only Been Speceifeid to one Page*/}
+            <partial name="_Notification"></partial>
             @RenderBody()
         </main>
     </div>
