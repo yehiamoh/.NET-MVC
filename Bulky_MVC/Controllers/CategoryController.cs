@@ -39,5 +39,63 @@ namespace Bulky_MVC.Controllers
             _dbContext.SaveChanges();
             return RedirectToAction("Index", "Category");
         }
+
+        public IActionResult Edit(int? id){
+            if(id==0 || id == null)
+            {
+                return NotFound();
+            }
+
+            Category? category = _dbContext.Categories.Find(id);
+
+            if (category == null) { 
+                return NotFound();
+            }
+            return View(category);
+        }
+        [HttpPost]
+        public IActionResult Edit(Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            _dbContext.Categories.Update(category);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Category");
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == 0 || id == null)
+            {
+                return NotFound();
+            }
+
+            Category? category = _dbContext.Categories.Find(id);
+
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+        [HttpPost,ActionName("Delete")]
+        public IActionResult DeletePOST(int? id)
+        {
+            Category? category = _dbContext.Categories.Find(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            _dbContext.Categories.Remove(category);
+            _dbContext.SaveChanges();
+            return RedirectToAction("Index", "Category");
+        }
     }
 }
+ 
